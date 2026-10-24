@@ -1,0 +1,30 @@
+name: REA - verificar instalacion sin PC
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/rea-iphone-check.yml
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar-rea:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Preparar Node.js compatible
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.1'
+      - name: Comprobar versiones
+        run: |
+          node --version
+          npm --version
+      - name: Instalar REA CLI desde npm oficial
+        run: npm install --global rea-agents@6.7.0
+      - name: Comprobar que REA se ejecuta
+        run: |
+          rea --help
+          rea-agents --help
