@@ -1,0 +1,13 @@
+{
+  "name": "REA para iPhone (Codespaces)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "postCreateCommand": "npm install --global rea-agents@6.7.0 && rea setup --yes --client vscode --client claude_code --skill=false && rea --help >/dev/null && echo 'REA CLI y registros MCP preparados; reinicia el cliente de IA para usar las herramientas.'",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "workbench.startupEditor": "none",
+        "workbench.panel.defaultLocation": "bottom"
+      }
+    }
+  }
+}
